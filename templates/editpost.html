@@ -1,0 +1,27 @@
+<form ng-submit="savePost()">
+    <div class="card">
+        <div class="p+">
+            <h1>Editar</h1>
+            <div flex-container="row">
+                <div flex-item>
+                    <lx-text-field label="Descripcion">
+                        <input type="text" ng-model="post.descripcion" required />
+                    </lx-text-field>
+                </div>
+            </div>
+            <div flex-container="row">
+                <div flex-item>
+                    <lx-checkbox ng-model="post.habilitado">Habilitado</lx-checkbox>
+                </div>
+            </div>
+            <div class="card__actions">
+                <button type="submit" class="btn btn--m btn--blue btn--raised" >
+                    Guardar
+                </button>
+                <button class="btn btn--m btn--raised" ng-click="Vovler()">
+                    Volver
+                </button>
+            </div>
+        </div>
+    </div>
+</form>
