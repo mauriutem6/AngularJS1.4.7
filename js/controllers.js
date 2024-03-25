@@ -3,7 +3,6 @@ angular.module("CustomDirective")
     Marcas = $resource("http://192.168.1.89:8089/api/Marcas");
     $scope.marcas = Marcas.query(); //return array
     this.currentNavItem = 'home'; // menu var
-    
     $scope.removePost = function(post){
         if (confirm("Desea eliminar:\n"+post.descripcion+"?")) {
             var url = 'http://192.168.1.89:8089/api/Marcas/'+  post.id;
@@ -17,7 +16,6 @@ angular.module("CustomDirective")
             });
         }
     }
-    
 })
 .controller("PostController",function($scope, $resource, $routeParams, $location, $http){
     $scope.title = "Editar Post";
@@ -39,7 +37,6 @@ angular.module("CustomDirective")
             habilitado: $scope.post.habilitado
         };
         var url = 'http://192.168.1.89:8089/api/Marcas/'+  $routeParams.id;
-
         $http.put(url, data)
             .then(function(response) { //success
                 console.log("update: " + JSON.stringify(data));
@@ -57,7 +54,6 @@ angular.module("CustomDirective")
         // Aquí puedes implementar la lógica de confirmación
         console.log('Acción confirmada');
     };
-    
 })
 .controller("NewController",function($scope,$location,$http){
     $scope.post = this;
@@ -69,29 +65,22 @@ angular.module("CustomDirective")
         };
         console.log(data);
         var url = 'http://192.168.1.89:8089/api/Marcas';
-
         $http.post(url, data)
             .then(function(response) {
                 // Maneja la respuesta exitosa
                 console.log("create: " + JSON.stringify(data));
                 $location.path("/");
-    
             })
             .catch(function(error) {
-                // Maneja el error
                 console.error('Error al actualizar datos:', error);
             });
-    
     }
     $scope.Volver = function(){
         $location.path("/");
     }
-    
 })
 .controller("UsuariosController",function($scope, $http, $resource){
     //.controller("MainController",function($scope,$resource, PostResource, $http, $location){
     User = $resource("https://jsonplaceholder.typicode.com/users/:id",{id: "@id"});
     $scope.users = User.query(); //return array
-
-    
 })
