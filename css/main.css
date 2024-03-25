@@ -1,7 +1,11 @@
+body, html{
+	background-color: #ffffff !important;
+}
 a,a:visited{
 	color: inherit;
 	text-decoration: none;
 }
 .top-space{
-	margin-top: 1em;
+	margin-bottom: 15px !important;
 }
+

@@ -1,26 +1,33 @@
 <form ng-submit="savePost">
+    <div class="row">
+        <div class="col-md-6 col-md-6 col-sm-6 col-xs-6">
+            <h1>Nuevo</h1>
+        </div>
+        <div class="col-md-6 col-md-6 col-sm-6 col-xs-6">
+        </div>
+    </div>
     <div class="card top-space">
         <div class="p+">
-            <div flex-container="row">
-                <div flex-item>
-                    <lx-text-field lx-label="Descripcion" lx-focus="true">
-                        <input type="text" ng-model="post.descripcion">
-                    </lx-text-field>
-                </div>
+            <div class="row">
+                <lx-text-field lx-label="Descripcion" lx-focus="true">
+                    <input type="text" ng-model="post.descripcion">
+                </lx-text-field>
             </div>
-            <div flex-container="row">
+            <div class="row">
                 <div flex-item>
                     <lx-checkbox ng-model="post.habilitado">Habilitado</lx-checkbox>
                 </div>
             </div>
         </div>
-        <div class="card__actions">
-            <button type="submit" class="btn btn--m btn--blue btn--raised" ng-click="savePost()">
-                Guardar
-            </button>
-            <button class="btn btn--m btn--raised" ng-click="Volver()">
-                Volver
-            </a>
+        <div class="row">
+            <div class="col-md-4 col-md-4 col-sm-1 col-xs-1">
+            </div>
+            <div class="col-md-4 col-md-4 col-sm-10 col-xs-10">
+                <button type="button" class="btn btn-primary btn-lg btn-block" ng-click="savePost()">Guardar</button>
+                <button type="button" class="btn btn-default btn-lg btn-block" ng-click="Volver()">Volver</button>
+            </div>
+            <div class="col-md-4 col-md-4 col-sm-1 col-xs-1">
+            </div>
         </div>
     </div>
 </form>

@@ -1,4 +1,4 @@
-angular.module("CustomDirective",["lumx","ngRoute","ngResource"])
+angular.module("CustomDirective",["lumx","ngRoute","ngResource","ngMaterial"])
 .config(function($routeProvider){
     $routeProvider
     .when("/",{
@@ -12,5 +12,9 @@ angular.module("CustomDirective",["lumx","ngRoute","ngResource"])
     .when('/nuevo/post', {
         controller: "NewController",
         templateUrl: "templates/newpost.html"
+    })
+    .when('/usuarios', {
+        controller: "UsuariosController",
+        templateUrl: "templates/user.html"
     })
 });

@@ -1,26 +1,29 @@
 <form ng-submit="savePost()">
+    <h1>Editar</h1>
     <div class="card">
-        <div class="p+">
-            <h1>Editar</h1>
-            <div flex-container="row">
-                <div flex-item>
+        
+            <div class="row">
+                <div class="col-md-12 col-md-12 col-sm-12 col-xs-12">
                     <lx-text-field label="Descripcion">
                         <input type="text" ng-model="post.descripcion" required />
                     </lx-text-field>
                 </div>
             </div>
-            <div flex-container="row">
-                <div flex-item>
-                    <lx-checkbox ng-model="post.habilitado">Habilitado</lx-checkbox>
+            <div class="row">
+                <div class="col-md-12 col-md-12 col-sm-12 col-xs-12">
+                    <div flex-item>
+                        <lx-checkbox ng-model="post.habilitado">Habilitado</lx-checkbox>
+                    </div>
                 </div>
             </div>
-            <div class="card__actions">
-                <button type="submit" class="btn btn--m btn--blue btn--raised" >
-                    Guardar
-                </button>
-                <button class="btn btn--m btn--raised" ng-click="Vovler()">
-                    Volver
-                </button>
+        <div class="row">
+            <div class="col-md-4 col-md-4 col-sm-1 col-xs-1">
+            </div>
+            <div class="col-md-4 col-md-4 col-sm-10 col-xs-10">
+                <button type="submit" class="btn btn-primary btn-lg btn-block" >Guardar</button>
+                <button type="button" class="btn btn-default btn-lg btn-block" ng-click="Volver()">Volver</button>
+            </div>
+            <div class="col-md-4 col-md-4 col-sm-1 col-xs-1">
             </div>
         </div>
     </div>

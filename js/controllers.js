@@ -1,29 +1,29 @@
 angular.module("CustomDirective")
 .controller("MainController",function($scope,$resource, PostResource, $http, $location){
-    User = $resource("https://jsonplaceholder.typicode.com/users/:id",{id: "@id"});
-    $scope.users = User.query(); //return array
-    
-    Marcas = $resource("https://localhost:7054/api/Marca");
+    Marcas = $resource("http://192.168.1.89:8089/api/Marcas");
     $scope.marcas = Marcas.query(); //return array
+    this.currentNavItem = 'home'; // menu var
     
     $scope.removePost = function(post){
-        var url = 'https://localhost:7054/api/Marca/'+  post.id;
-        $http.delete(url)
+        if (confirm("Desea eliminar:\n"+post.descripcion+"?")) {
+            var url = 'http://192.168.1.89:8089/api/Marcas/'+  post.id;
+            $http.delete(url)
             .then(function(response) { // success
                 console.log("delete ok: " + post.id);
                 $scope.marcas = Marcas.query(); //return array
             })
             .catch(function(error) {
-                // Maneja el error
                 console.error('Error en delete:', error);
             });
+        }
     }
+    
 })
 .controller("PostController",function($scope, $resource, $routeParams, $location, $http){
     $scope.title = "Editar Post";
     
     $scope.post = {};
-    $http.get('https://localhost:7054/api/Marca/'+  $routeParams.id)
+    $http.get('http://192.168.1.89:8089/api/Marcas/'+  $routeParams.id)
     .success(function(data){
         console.log("----");
         $scope.post = data;
@@ -38,7 +38,7 @@ angular.module("CustomDirective")
             descripcion: $scope.post.descripcion,
             habilitado: $scope.post.habilitado
         };
-        var url = 'https://localhost:7054/api/Marca/'+  $routeParams.id;
+        var url = 'http://192.168.1.89:8089/api/Marcas/'+  $routeParams.id;
 
         $http.put(url, data)
             .then(function(response) { //success
@@ -53,6 +53,11 @@ angular.module("CustomDirective")
         $location.path("/");
     }
     
+    $scope.confirmAction = function() {
+        // Aquí puedes implementar la lógica de confirmación
+        console.log('Acción confirmada');
+    };
+    
 })
 .controller("NewController",function($scope,$location,$http){
     $scope.post = this;
@@ -63,7 +68,7 @@ angular.module("CustomDirective")
             habilitado: $scope.post.habilitado
         };
         console.log(data);
-        var url = 'https://localhost:7054/api/Marca/';
+        var url = 'http://192.168.1.89:8089/api/Marcas';
 
         $http.post(url, data)
             .then(function(response) {
@@ -81,5 +86,12 @@ angular.module("CustomDirective")
     $scope.Volver = function(){
         $location.path("/");
     }
+    
+})
+.controller("UsuariosController",function($scope, $http, $resource){
+    //.controller("MainController",function($scope,$resource, PostResource, $http, $location){
+    User = $resource("https://jsonplaceholder.typicode.com/users/:id",{id: "@id"});
+    $scope.users = User.query(); //return array
+
     
 })

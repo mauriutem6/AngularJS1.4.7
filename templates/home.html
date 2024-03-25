@@ -1,62 +1,50 @@
-<lx-tabs>
-    <lx-tab lx-label="Marcas">
-        <div class="p+">
-            <div class="card" ng-repeat="post in marcas" style="margin-top: 5px;">
-                <div class="p+">
-                    
-                    <strong class="fs-headline display-block tc-red-900">
-                        {{post.id}}
-                    </strong>
-                    <div class="fs-title display-block" >
-                        {{post.descripcion}}
-                    </div>
-                    
-                    <div class="fs-title display-block tc-green-A400" ng-if="post.habilitado==true">
-                        Habilitado
-                    </div>
-                    <div class="fs-title display-block tc-red-A400" ng-if="post.habilitado==false">
-                        Deshabilitado
-                    </div>
-                    
-                    <br>
-                    <div class="" flex-container="row" flex-align="left ">
-                        <div flex-item="1" >
-                            <a href="#/post/{{post.id}}" class="btn btn--m btn--blue btn--raised" lx-ripple>Editar</a>
-                        </div>
-                        <div flex-item="1" >
-                            <a ng-click="removePost(post)" class="btn btn--m btn--red btn--raised" lx-ripple>Eliminar</a>
-                        </div>
-                        <div flex-item="1" ></div>
-                    </div>
-                </div>
-            </div>
+<div class="row">
+    <div class="col-md-6 col-md-6 col-sm-6 col-xs-6">
+        <h1>Marcas</h1>
+    </div>
+    <div class="col-md-6 col-md-6 col-sm-6 col-xs-6">
+        <div style="float: right;padding-right: 10px;padding-top: 20px;">
+            <a class="btn btn--m btn--blue btn--raised" href="#/nuevo/post">Crear Marca</a>
         </div>
-    </lx-tab>
-    <lx-tab lx-label="Users">
-        <div class="p+">
-            <div class="card top-space" ng-repeat="user in users">
-                <div flex-container="row">
-                    <div class="card__img card__img--left" style="height: 160px;">
-                        <img src="imgs/user.jpg" alt="mas informacion de la imagen" >
-                    </div>
-                    <div flex-item flex-container="column">
-                        <div flex-item>
-                            <strong class="fs-headline display-block">
-                                {{user.name}}
-                            </strong>
-                            <strong class="fs-subhead tc-black-2 display-block">
-                                {{user.email}}
-                            </strong>
-                            <div class="card__actions">
-                                <a href="#">Ver usuario</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-            </div>
+    </div>
+</div>
+
+<div class="card top-space" ng-repeat="post in marcas" style="margin-top: 10px;padding: 10px;">
+    <div class="row">
+        <div class="col-md-4 col-md-4 col-sm-4 col-xs-4">
+            <strong class="fs-headline display-block tc-red-900">
+                {{post.id}}
+            </strong>                            
+        </div>
+        <div class="col-md-4 col-md-4 col-sm-4 col-xs-4">
+            <div>
+                <h4>{{post.descripcion}}</h4>
+            </div>                            
 
         </div>
-    </lx-tab>
-</lx-tabs>
-
+        
+        <div class="col-md-4 col-md-4 col-sm-4 col-xs-4">
+            <div class="fs-title display-block tc-green-A400" ng-if="post.habilitado==true">
+                Habilitado
+            </div>
+            <div class="fs-title display-block tc-red-A400" ng-if="post.habilitado==false">
+                Deshabilitado
+            </div>                                                
+        </div>
+    </div>
+    <hr>
+    <div class="row">    
+        <div class="col-md-3 col-md-3 hiden-sm hiden-xs">
+        </div>
+        <div class="col-md-3 col-md-3 col-sm-6 col-xs-6">
+            <a href="#/post/{{post.id}}" class="btn btn--m btn--blue btn--raised" lx-ripple>Editar</a>
+        </div>
+        <div class="col-md-3 col-md-3 col-sm-6 col-xs-6">
+            <a ng-click="removePost(post)" class="btn btn--m btn--red btn--raised" lx-ripple>Eliminar</a>
+        </div>
+        <div class="col-md-3 col-md-3 hiden-sm hiden-xs">
+        </div>
+    </div>
+</div>
+        
+    
